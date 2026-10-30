@@ -12,7 +12,7 @@ const Product = () => {
     : productList.filter(product => product.category === activeTab)
 
   return (
-    <section className='max-w-350 mx-auto px-10 py-20'>
+    <section id="products" className='max-w-350 mx-auto scroll-mt-24 px-10 py-20'>
       <Heading highlight="Our" heading="Product" />
       <div className='mt-10 flex flex-wrap justify-center gap-3' role='tablist' aria-label='Product categories'>
         {productTabs.map(tab => (

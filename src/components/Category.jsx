@@ -50,7 +50,7 @@ const Category = () => {
   })
 
   return (
-    <section>
+    <section id="categories" className="scroll-mt-24">
         <div className='py-20 max-w-350 mx-auto px-10'>
         <Heading highlight="Shop" heading="Our Category" />
         {/* Category Card */}

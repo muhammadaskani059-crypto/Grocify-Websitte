@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { GoHeartFill } from "react-icons/go";
 import { HiShoppingBag } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
@@ -20,7 +21,8 @@ const Navbar = () => {
             setScrolled(window.scrollY > 10)
         }
 
-        window.addEventListener('scroll',handleScroll)
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
     },[])
 
 
@@ -29,23 +31,23 @@ const Navbar = () => {
             <header className={` bg-white mb-2 fixed top-0 right-0 left-0 z-50 ${isScrolled ? 'shadow-lg' : ''}`}>
                 <nav className='max-w-350 mx-auto px-10 md:h-[14vh] h-[12vh] flex justify-between items-center'>
 
-                    <a href="#" className='text-3xl font-bold'>
-                        Gr<span className='text-orange-500 uppercase'>o</span>cifpy</a>
+                    <NavLink to="/" className='text-3xl font-bold'>
+                        Gr<span className='text-orange-500 uppercase'>o</span>cify</NavLink>
 
                     {/* Destop Menu */}
 
                     <ul className='md:flex items-center gap-x-15 hidden'>
                         <li>
-                            <a href="#" className='font-semibold tracking-wider text-orange-500'>Home</a>
+                            <NavLink to="/" end className={({ isActive }) => `font-semibold tracking-wider hover:text-orange-500 ${isActive ? 'text-orange-500' : 'text-zinc-800'}`}>Home</NavLink>
                         </li>
                         <li>
-                            <a href="#" className='font-semibold tracking-wider text-zinc-800 hover:text-orange-500'>abouts us</a>
+                            <NavLink to="/about-us" className={({ isActive }) => `font-semibold tracking-wider hover:text-orange-500 ${isActive ? 'text-orange-500' : 'text-zinc-800'}`}>About Us</NavLink>
                         </li>
                         <li>
-                            <a href="#" className='font-semibold tracking-wider text-zinc-800 hover:text-orange-500'>Process</a>
+                            <NavLink to="/process" className={({ isActive }) => `font-semibold tracking-wider hover:text-orange-500 ${isActive ? 'text-orange-500' : 'text-zinc-800'}`}>Process</NavLink>
                         </li>
                         <li>
-                            <a href="#" className='font-semibold tracking-wider text-zinc-800 hover:text-orange-500'>Contact Us</a>
+                            <NavLink to="/contact-us" className={({ isActive }) => `font-semibold tracking-wider hover:text-orange-500 ${isActive ? 'text-orange-500' : 'text-zinc-800'}`}>Contact Us</NavLink>
                         </li>
                     </ul>
 
@@ -72,16 +74,16 @@ const Navbar = () => {
                     {/* Mobiel menu */}
                     <ul className={`flex flex-col gap-y-10 bg-orange-500/15 backdrop-blur-lg rounded-xl items-center gap-x-15 p-15 md:hidden absolute top-30 -left-full transform -translate-x-1/2 transition-all duration-500 ${showMenu ? 'left-1/2' : ""}`}>
                         <li>
-                            <a href="#" className='font-semibold tracking-wider text-orange-500'>Home</a>
+                            <NavLink to="/" end className={({ isActive }) => `font-semibold tracking-wider hover:text-orange-500 ${isActive ? 'text-orange-500' : 'text-zinc-800'}`} onClick={() => setShowMenu(false)}>Home</NavLink>
                         </li>
                         <li>
-                            <a href="#" className='font-semibold tracking-wider text-zinc-800 hover:text-orange-500'>abouts us</a>
+                            <NavLink to="/about-us" className={({ isActive }) => `font-semibold tracking-wider hover:text-orange-500 ${isActive ? 'text-orange-500' : 'text-zinc-800'}`} onClick={() => setShowMenu(false)}>About Us</NavLink>
                         </li>
                         <li>
-                            <a href="#" className='font-semibold tracking-wider text-zinc-800 hover:text-orange-500'>Process</a>
+                            <NavLink to="/process" className={({ isActive }) => `font-semibold tracking-wider hover:text-orange-500 ${isActive ? 'text-orange-500' : 'text-zinc-800'}`} onClick={() => setShowMenu(false)}>Process</NavLink>
                         </li>
                         <li>
-                            <a href="#" className='font-semibold tracking-wider text-zinc-800 hover:text-orange-500'>Contact Us</a>
+                            <NavLink to="/contact-us" className={({ isActive }) => `font-semibold tracking-wider hover:text-orange-500 ${isActive ? 'text-orange-500' : 'text-zinc-800'}`} onClick={() => setShowMenu(false)}>Contact Us</NavLink>
                         </li>
                         <li className='flex p-1 border-2 border-orange-500 rounded-full '>
                             <input type="text" name="text" id="text" placeholder='Search...' autoComplete='off'  className='flex-1 h-[5vh] px-3 focus:outline-none'/>
